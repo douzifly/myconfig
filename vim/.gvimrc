@@ -1,4 +1,11 @@
-set guifont=Source\ Code\ Pro:h16
+"set window
+winpos 235 235
+set lines=40 columns=115
+
+
+
+
+"set guifont=Source\ Code\ Pro:h13
 au BufRead,BufNewFile *.go set filetype=go
 colorscheme jellybeans 
 set number
