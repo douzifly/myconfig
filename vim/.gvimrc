@@ -1,12 +1,12 @@
 "set window
 winpos 235 235
-set lines=40 columns=115
+set lines=50 columns=145
 
-"set guifont=Source\ Code\ Pro:h13
+set guifont=Droid\ Sans\ Mono:h16
 au BufRead,BufNewFile *.go set filetype=go
-colorscheme distinguished
+"colorscheme distinguished
 set number
-"colo evening 
+colo evening 
 
 "autodent
 set autoindent
