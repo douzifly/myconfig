@@ -2,36 +2,17 @@
 winpos 235 235
 set lines=40 columns=115
 
-
-
-
 "set guifont=Source\ Code\ Pro:h13
 au BufRead,BufNewFile *.go set filetype=go
-colorscheme jellybeans 
+colorscheme distinguished
 set number
+"colo evening 
 
-"for vundle, a plugin manager
-set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-
-" My Bundles here:
-"
-" original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-" non github repos
-Bundle 'git://git.wincent.com/command-t.git'
-" ...
+"autodent
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set mouse=a
 
 filetype plugin indent on     " required!
 "
@@ -44,3 +25,29 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
 
+nmap <F2> :NERDTreeToggle <CR>
+nmap <F3> :TlistToggle <CR>
+map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+
+" miniBufExpor edit mulit files
+let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavArrows = 1 
+let g:miniBufExplMapCTabSwitchBufs = 1 
+let g:miniBufExplModSelTarget = 1
+let g:miniBufExplMoreThanOne=0
+" window manager
+let g:NERDTree_title="[NERDTree]"
+let g:winManagerWindowLayout="NERDTree|TagList"
+
+function! NERDTree_Start()
+      exec 'NERDTree'
+endfunction
+
+function! NERDTree_IsValid()
+      return 1
+endfunction
+
+nmap wm :WMToggle<CR>
