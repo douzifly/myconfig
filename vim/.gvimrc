@@ -2,10 +2,10 @@
 winpos 235 235
 set lines=40 columns=115
 
-set guifont=Droid\ Sans\ Mono\ 13
+set guifont=Droid\ Sans\ Mono\ 10
 au BufRead,BufNewFile *.go set filetype=go
 set background=dark
-colorscheme solarized
+colorscheme peaksea
 set number
 "colo desert 
 
