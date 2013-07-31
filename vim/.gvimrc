@@ -1,6 +1,6 @@
 "set window
 winpos 235 235
-set lines=40 columns=115
+set lines=50 columns=145
 
 set guifont=Droid\ Sans\ Mono\ 10
 au BufRead,BufNewFile *.go set filetype=go
