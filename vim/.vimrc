@@ -29,6 +29,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'dgryski/vim-godef'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'https://github.com/Shougo/neocomplcache.vim.git'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'https://github.com/ervandew/supertab.git'
 filetype plugin indent on     " required!
 "
 " Brief help
@@ -46,7 +48,7 @@ syntax on
 winpos 235 235
 set lines=40 columns=115
 
-"set guifont=Droid\ Sans\ Mono\ 12
+set guifont=Menlo:h16
 set background=dark
 "colorscheme solarized 
 set number
@@ -59,7 +61,7 @@ set shiftwidth=4
 set mouse=a
 set fileencodings=uft-8,gbk 
 " nerdtree
-nmap <F2> :NERDTreeToggle <CR>
+nmap <F2> :NERDTreeTabsToggle <CR>
 
 "----------gotags-----------------
 Bundle 'majutsushi/tagbar'
@@ -100,4 +102,5 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "neocomplete
 let g:neocomplcache_enable_at_startup=1
-
+let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_open_on_gui_startup=1
