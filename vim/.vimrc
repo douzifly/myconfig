@@ -28,6 +28,7 @@ Bundle 'cespare/vim-golang'
 Bundle 'scrooloose/nerdtree'
 Bundle 'dgryski/vim-godef'
 Bundle 'Blackrush/vim-gocode'
+Bundle 'https://github.com/Shougo/neocomplcache.vim.git'
 filetype plugin indent on     " required!
 "
 " Brief help
@@ -91,3 +92,12 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 	\ }
 "----------end gotags------------
+" If you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+"neocomplete
+let g:neocomplcache_enable_at_startup=1
+
