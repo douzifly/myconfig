@@ -48,8 +48,8 @@ syntax on
 "winpos 235 235
 "set lines=40 columns=115
 
-"set guifont=Menlo:h16
-set guifont=Meslo\ LG\ M\ 12
+set guifont=Menlo:h16
+"set guifont=Meslo\ LG\ M\ 12
 set background=dark
 "colorscheme solarized 
 set number
@@ -60,7 +60,7 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set mouse=a
-set fileencodings=uft-8,gbk 
+set fileencodings=uft-8
 " nerdtree
 nmap <F2> :NERDTreeTabsToggle <CR>
 
