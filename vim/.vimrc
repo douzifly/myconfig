@@ -45,10 +45,11 @@ filetype plugin indent on     " required!
 " my customize
 syntax on
 "set window
-winpos 235 235
-set lines=40 columns=115
+"winpos 235 235
+"set lines=40 columns=115
 
-set guifont=Menlo:h16
+"set guifont=Menlo:h16
+set guifont=Meslo\ LG\ M\ 12
 set background=dark
 "colorscheme solarized 
 set number
