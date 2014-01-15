@@ -60,7 +60,7 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set mouse=a
-set fileencodings=uft-8
+set fileencodings=utf-8
 " nerdtree
 nmap <F2> :NERDTreeTabsToggle <CR>
 
@@ -105,3 +105,29 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 let g:neocomplcache_enable_at_startup=1
 let g:nerdtree_tabs_open_on_console_startup=1
 let g:nerdtree_tabs_open_on_gui_startup=1
+
+" author info
+map <F4> ms:call TitleDet()<cr>'s
+function AddTitle()
+        call append(0,"/*******************************************************************************")
+        "call append(1,"#")
+        call append(1," * Author: douzifly")
+        "call append(3,"#")
+        call append(2," * Email : douzifly@gmail.com")
+        "call append(5,"#")
+        call append(3," * Last modified : ".strftime("%Y-%m-%d %H:%M"))
+        "call append(7,"#")
+        call append(4," * Filename : ".expand("%:t"))
+        "call append(9,"#")
+        call append(5," * Description : ")
+        "call append(11,"#")
+        call append(6," * *****************************************************************************/")
+        echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
+endf
+
+"判断前10行代码里面，是否有Last modified这个单词，
+"如果没有的话，代表没有添加过作者信息，需要新添加；
+"如果有的话，那么只需要更新即可
+function TitleDet()
+        call AddTitle()
+endfunction
