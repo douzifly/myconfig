@@ -1,47 +1,6 @@
 set nocompatible              " be iMproved
 filetype off                  " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
-
-" My bundles here:
-"
-" original repos on GitHub
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-" non-GitHub repos
-Bundle 'git://git.wincent.com/command-t.git'
-" Git repos on your local machine (i.e. when working on your own plugin)
-"Bundle 'file:///Users/gmarik/path/to/plugin'
-" ...
-" add by me
-Bundle 'cespare/vim-golang'
-Bundle 'scrooloose/nerdtree'
-Bundle 'dgryski/vim-godef'
-Bundle 'Blackrush/vim-gocode'
-Bundle 'https://github.com/Shougo/neocomplcache.vim.git'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'https://github.com/ervandew/supertab.git'
-filetype plugin indent on     " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install (update) bundles
-" :BundleSearch(!) foo - search (or refresh cache first) for foo
-" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle commands are not allowed.
-
 " my customize
 syntax on
 "set window
@@ -49,11 +8,30 @@ syntax on
 "set lines=40 columns=115
 
 set guifont=Menlo:h16
-"set guifont=Meslo\ LG\ M\ 12
-set background=dark
+"set guifont=Meslo\ LG\ M\ 9 
+set background=light
 "colorscheme solarized 
 set number
-color desert 
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'fatih/vim-go'
+Plugin 'majutsushi/tagbar'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neocomplete.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 
 "autodent
 set autoindent
@@ -61,40 +39,7 @@ set tabstop=4
 set shiftwidth=4
 set mouse=a
 set fileencodings=utf-8
-" nerdtree
-nmap <F2> :NERDTreeTabsToggle <CR>
 
-"----------gotags-----------------
-Bundle 'majutsushi/tagbar'
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-	\ }
-"----------end gotags------------
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
 " insert mode
@@ -102,9 +47,9 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "neocomplete
-let g:neocomplcache_enable_at_startup=1
-let g:nerdtree_tabs_open_on_console_startup=1
-let g:nerdtree_tabs_open_on_gui_startup=1
+"let g:neocomplcache_enable_at_startup=1
+"let g:nerdtree_tabs_open_on_console_startup=0
+"let g:nerdtree_tabs_open_on_gui_startup=0
 
 " author info
 map <F4> ms:call TitleDet()<cr>'s
@@ -131,3 +76,41 @@ endf
 function TitleDet()
         call AddTitle()
 endfunction
+"colorscheme solarized
+"
+"
+
+"shortcuts
+" nerdtree
+nmap <F2> :NERDTreeToggle <CR>
+
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
+let g:go_play_open_browser = 0
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 0
+
+let g:go_bin_path = "/User/douzifly/dev/go/bin"
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
